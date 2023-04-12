@@ -20,22 +20,22 @@ namespace SpecflowTask.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("localhost")]
-    public partial class LocalhostFeature
+    [NUnit.Framework.DescriptionAttribute("MarsQA Webiste")]
+    public partial class MarsQAWebisteFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "localhost.feature"
+#line 1 "MarsQA.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "features", "localhost", "As a site user\r\nI would like to register,signup and create profile\r\nso that selle" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "features", "MarsQA Webiste", "As a site user\r\nI would like to register,signup and create profile\r\nso that selle" +
                     "r is able to see his profile details on the page", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -75,14 +75,14 @@ namespace SpecflowTask.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("1) Signin to localhost with valid details")]
+        [NUnit.Framework.DescriptionAttribute("1) Signin to MarsQA Website with valid details")]
         [NUnit.Framework.CategoryAttribute("tag1")]
-        public void _1SigninToLocalhostWithValidDetails()
+        public void _1SigninToMarsQAWebsiteWithValidDetails()
         {
             string[] tagsOfScenario = new string[] {
                     "tag1"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1) Signin to localhost with valid details", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1) Signin to MarsQA Website with valid details", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 9
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -94,7 +94,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 10
-   testRunner.Given("I registered in localhost", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+   testRunner.Given("I registered in MarsQA Website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 11
    testRunner.Then("I see registered sucessfully message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -104,12 +104,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("2) I will add skills in the localhost profile page")]
-        public void _2IWillAddSkillsInTheLocalhostProfilePage()
+        [NUnit.Framework.DescriptionAttribute("2) I will add skills in the MarsQA Website profile page")]
+        public void _2IWillAddSkillsInTheMarsQAWebsiteProfilePage()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2) I will add skills in the localhost profile page", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2) I will add skills in the MarsQA Website profile page", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 13
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -121,7 +121,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 14
-    testRunner.Given("I logged into localhost sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("I logged into MarsQA Website sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 15
  testRunner.When("I navigate to skills tab and add skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -134,12 +134,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("3) I will update skills in the localhost profile page")]
-        public void _3IWillUpdateSkillsInTheLocalhostProfilePage()
+        [NUnit.Framework.DescriptionAttribute("3) I will update skills in the MarsQA Website profile page")]
+        public void _3IWillUpdateSkillsInTheMarsQAWebsiteProfilePage()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3) I will update skills in the localhost profile page", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3) I will update skills in the MarsQA Website profile page", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 18
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -151,7 +151,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 19
-    testRunner.Given("I logged into localhost sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("I logged into MarsQA Website sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 20
  testRunner.When("I navigate to skills tab and update skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -164,12 +164,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("4) I will delete skills in the localhost profile page")]
-        public void _4IWillDeleteSkillsInTheLocalhostProfilePage()
+        [NUnit.Framework.DescriptionAttribute("4) I will delete skills in the MarsQA Website profile page")]
+        public void _4IWillDeleteSkillsInTheMarsQAWebsiteProfilePage()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4) I will delete skills in the localhost profile page", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4) I will delete skills in the MarsQA Website profile page", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 23
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -181,7 +181,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 24
-    testRunner.Given("I logged into localhost sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("I logged into MarsQA Website sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 25
  testRunner.When("I navigate to skills tab and delete skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -194,12 +194,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("5) I will submit share skill form  in the localhost profile page")]
-        public void _5IWillSubmitShareSkillFormInTheLocalhostProfilePage()
+        [NUnit.Framework.DescriptionAttribute("5) I will submit share skill form  in the MarsQA Website profile page")]
+        public void _5IWillSubmitShareSkillFormInTheMarsQAWebsiteProfilePage()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5) I will submit share skill form  in the localhost profile page", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5) I will submit share skill form  in the MarsQA Website profile page", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 28
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -211,7 +211,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 29
-    testRunner.Given("I logged into localhost sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("I logged into MarsQA Website sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 30
  testRunner.When("I navigate to shareskills and give valid data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

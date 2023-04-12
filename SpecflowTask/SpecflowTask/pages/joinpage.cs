@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Automation1.utilities;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using SpecflowTask.utilities;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace SpecflowTask.pages
 {
-    public class register_page
+    public class register_page:Wait
     {
         public void registeractions(IWebDriver driver)
         {
@@ -19,16 +20,17 @@ namespace SpecflowTask.pages
             driver.Manage().Window.Maximize();
 
 
-            //Lunch Localhost:5000
+            //Launch MarsQA Website
             driver.Navigate().GoToUrl("http://localhost:5000/");
-            Thread.Sleep(2000);
 
             //Identify the join button and click on it
+            WaitTobeClickable(driver, "XPath", "//*[@id=\"home\"]/div/div/div[1]/div/button", 10);
             IWebElement joinbutton = driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/button"));
             joinbutton.Click();
 
 
             //Identify the name textbox and enter the valid name
+            WaitForELementToExist(driver, "XPath", "/html/body/div[2]/div/div/form/div[1]/input", 10);
             IWebElement nametextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[1]/input"));
             nametextbox.SendKeys("Saritha");
 
@@ -55,22 +57,19 @@ namespace SpecflowTask.pages
             //Click on terms and conditions checkbox
             IWebElement termsandconditionscheckbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[6]/div/div/input"));
             termsandconditionscheckbox.Click();
-            Thread.Sleep(1000);
 
             //Click on join button
+            WaitTobeClickable(driver, "Id", "submit-btn", 7);
             IWebElement joinbutton1 = driver.FindElement(By.Id("submit-btn"));
             joinbutton1.Click();
-            Thread.Sleep(3000);
-
-            //Check if new user register successfully
-            // IWebElement newregister = driver.FindElement(By.XPath("/html/body/div"));
-           // Assert.That(newregister.Text! == "unsuccessfull", "not registered successfully");
+            WaitForELementToExist(driver, "CssSelector", "body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-success.ns-show > div", 3);
         }
-        public string GetText(IWebDriver driver)
+        public string alertWindow(IWebDriver driver)
         {
-            IWebElement actualText = driver.FindElement(By.XPath("/html/body/div"));
-            Console.WriteLine(actualText);
-            return actualText.Text;
+
+            WaitForELementToExist(driver, "CssSelector", "[class=\"ns-box ns-growl ns-effect-jelly ns-type-success ns-show\"]", 5);
+            IWebElement confirmationAlert = driver.FindElement(By.CssSelector("[class=\"ns-box ns-growl ns-effect-jelly ns-type-success ns-show\"]"));
+            return confirmationAlert.Text;
 
         }
 

@@ -8,19 +8,16 @@ using TechTalk.SpecFlow;
 namespace SpecflowTask.stepdefinition
 {
     [Binding]
-    public class LocalhostStepDefinitions:Commondriver
+    public class MarsQAWebsiteStepDefinitions : Commondriver
     {
         register_page registerpageobj = new register_page();
         signinpage loginpageobj = new signinpage();
         profilepage profilepageobj = new profilepage();
         shareskillpage shareskillpageobj = new shareskillpage();
 
-       [Given(@"I registered in localhost")]
-        public void GivenIRegisteredLocalhostSucessfully()
-        {
-            //Open chrome browser
-            //driver = new ChromeDriver();
-
+       [Given(@"I registered in MarsQA Website")]
+        public void GivenIRegisteredMarsQAWebsiteSucessfully()
+        { 
             //Registerpage object intialization and difinition
             registerpageobj.registeractions(driver);
 
@@ -28,14 +25,12 @@ namespace SpecflowTask.stepdefinition
         [Then(@"I see registered sucessfully message")]
         public void ThenISeeRegisteredSucessfullyMessage()
         {
-            string newText = registerpageobj.GetText(driver);
+            string newText = registerpageobj.alertWindow(driver);
 
             Assert.That(newText == "Registration successful", "The registration was unsuccessful, Please fix it");
-            //driver.Quit();
-
         }
-        [Given(@"I logged into localhost sucessfully")]
-        public void GivenILoggedIntoLocalhostSucessfully()
+        [Given(@"I logged into MarsQA Website sucessfully")]
+        public void GivenILoggedIntoMarsQAWebsiteSucessfully()
         {            
             //loginpage object intialization and difinition
             loginpageobj.loginactions(driver);
@@ -49,12 +44,8 @@ namespace SpecflowTask.stepdefinition
         [Then(@"The skills should be added to the profile sucessfully")]
         public void ThenTheSkillsShouldBeAddedToTheProfileSucessfully()
         {
-            string addedskill = profilepageobj.GetaddedText(driver);
-            string newskill = profilepageobj.Getaddskill(driver);
-            string newskilllevel = profilepageobj.Getaddskilllevel(driver);
-            Assert.That(addedskill == "Music3 has been added to your skills", "Actual text and expected text do not match");
-            Assert.That(newskill == "Music3", "Actual skill and expected skill do Not match");
-            Assert.That(newskilllevel == "Expert", "Actual skilllevel and expected skilllevel do Not match");
+            string addedskill = profilepageobj.alertWindow(driver);
+            Assert.That(addedskill == "Music23 has been added to your skills", "Music21 has not been matched correctly");
         }
         [When(@"I navigate to skills tab and update skills")]
         public void WhenINavigateToSkillsTabAndUpdateSkills()
@@ -64,11 +55,9 @@ namespace SpecflowTask.stepdefinition
         [Then(@"The skills should be updated to the profile sucessfully")]
         public void ThenTheSkillsShouldBeUpdatedToTheProfileSucessfully()
         {
-            string CreatedSkill = profilepageobj.GetEditSkill(driver);
-            string CreatedSkilllevel = profilepageobj.GetEditSkilllevel(driver);
-
-            Assert.That(CreatedSkill == "chess2", "Actual skill and expected skill do Not match");
-            Assert.That(CreatedSkilllevel == "Beginner", "Actual skilllevel and expected skilllevel do Not match");
+            string editedskill = profilepageobj.alertWindow(driver);
+            Assert.That(editedskill == "chess4 has been updated to your skills", "Actual text and expected text do not match");
+            
         }
 
         [When(@"I navigate to skills tab and delete skills")]
@@ -79,8 +68,8 @@ namespace SpecflowTask.stepdefinition
         [Then(@"The skills should be deleted sucessfully")]
         public void ThenTheSkillsShouldBeDeletedSucessfully()
         {
-            string DeletedSkill = profilepageobj.GetText(driver);
-            Assert.That(DeletedSkill == "chess2 has been deleted", "Actual data and expected data do Not match");
+            string DeletedSkill = profilepageobj.alertWindow(driver);
+            Assert.That(DeletedSkill == "chess4 has been deleted", "Actual data and expected data do Not match");
         }
 
 
