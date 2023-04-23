@@ -1,5 +1,6 @@
 ﻿using Automation1.utilities;
 using OpenQA.Selenium;
+using SpecflowTask.utilities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,101 +10,113 @@ using System.Threading.Tasks;
 
 namespace SpecflowTask.pages
 {
-    internal class shareskillpage:Wait
+    public static class shareskillpage
     {
-        public void ShareSkills(IWebDriver driver)
+        private static IWebElement shareskillstab =>Commondriver. driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/div[2]/a"));
+        private static IWebElement titletextbox => Commondriver.driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[1]/div/div[2]/div/div[1]/input"));
+        private static IWebElement descriptiontextbox => Commondriver.driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
+        private static IWebElement categorydropdown => Commondriver.driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[3]/div[2]/div/div/select"));
+        private static IWebElement musicaudiooption => Commondriver.driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[3]/div[2]/div/div[1]/select/option[6]"));
+        private static IWebElement subcategorydropdown => Commondriver.driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[3]/div[2]/div/div[2]/div[1]/select"));
+        private static IWebElement voiceoveroption => Commondriver.driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[3]/div[2]/div/div[2]/div[1]/select/option[3]"));
+        private static IWebElement tagstextbox => Commondriver.driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[4]/div[2]/div[1]/div/div/div/input"));
+        private static IWebElement oneoffservicebutton => Commondriver.driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[5]/div[2]/div[1]/div[2]/div/input"));
+        private static IWebElement onsitebutton => Commondriver.driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[6]/div[2]/div/div[1]/div/input"));
+        private static IWebElement startdate => Commondriver.driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[7]/div[2]/div/div[1]/div[2]/input"));
+        private static IWebElement enddate => Commondriver.driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[7]/div[2]/div/div[1]/div[4]/input"));
+        private static IWebElement addnewtag => Commondriver.driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[8]/div[4]/div[1]/div/div/div/div/input"));
+        private static IWebElement savebutton => Commondriver.driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[11]/div/input[1]"));
+        private static IWebElement createdcategory => Commondriver.driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[2]"));
+        private static IWebElement createdtitle => Commondriver.driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
+        private static IWebElement createddescription => Commondriver.driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[4]"));
+        private static IWebElement createdservicetype =>Commondriver.driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[5]"));
+        private static IWebElement createdactive => Commondriver.driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[7]/div/input"));
+        public static void ShareSkills()
         {
             //Navigate to shareskills tab
-            IWebElement shareskillstab = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/div[2]/a"));
             shareskillstab.Click();
-
+        }
+        public static void Entertitlename()
+        {
             //Identify title textbox and enter valid title name
-            WaitTobeClickable(driver, "XPath", "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[1]/div/div[2]/div/div[1]/input", 10);
-            IWebElement titletextbox = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[1]/div/div[2]/div/div[1]/input"));
+            Wait.WaitTobeClickable(Commondriver.driver, "XPath", "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[1]/div/div[2]/div/div[1]/input", 10);
             titletextbox.SendKeys("music for beginners");
-
+        }
+        public static void Enterdescription()
+        {
             //Identify description textbox and enter valid description
-            IWebElement descriptiontextbox = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
             descriptiontextbox.SendKeys("my hobbies are listening music");
-
+        }
+        public static void Selectcategory()
+        {
             //Identify category dropdown ans select category and subcategory
-            WaitTobeClickable(driver, "XPath", "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[3]/div[2]/div/div/select", 10);
-            IWebElement categorydropdown = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[3]/div[2]/div/div/select"));
+            Wait.WaitTobeClickable(Commondriver.driver, "XPath", "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[3]/div[2]/div/div/select", 10);
             categorydropdown.Click();
-
-            IWebElement musicaudiooption = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[3]/div[2]/div/div[1]/select/option[6]"));
             musicaudiooption.Click();
-
+        }
+        public static void Selectsubcategory()
+        {
             //Identify subcategory dropdown select subcategory
-            WaitTobeClickable(driver, "XPath", "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[3]/div[2]/div/div[2]/div[1]/select", 10);
-            IWebElement subcategorydropdown = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[3]/div[2]/div/div[2]/div[1]/select"));
+            Wait.WaitTobeClickable(Commondriver.driver, "XPath", "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[3]/div[2]/div/div[2]/div[1]/select", 10);
             subcategorydropdown.Click();
-
-            IWebElement voiceoveroption = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[3]/div[2]/div/div[2]/div[1]/select/option[3]"));
             voiceoveroption.Click();
-
+        }
+        public static void Addtag()
+        {
             //Identify tags textbox and add new tag
-            IWebElement tagstextbox = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[4]/div[2]/div[1]/div/div/div/input"));
             tagstextbox.SendKeys("abc");
             tagstextbox.SendKeys(Keys.Enter);
-
+        }
+        public static void Clickoneoffservicebutton()
+        {
             //Identify servicetypebutton and click on oneoff service button
-            IWebElement oneoffservicebutton = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[5]/div[2]/div[1]/div[2]/div/input"));
             oneoffservicebutton.Click();
             oneoffservicebutton.Click();
-
+        }
+        public static void Clickonsitebutton()
+        {
             //Identify locetion type and click on onsitebutton
-            IWebElement onsitebutton = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[6]/div[2]/div/div[1]/div/input"));
             onsitebutton.Click();
-
+        }
+        public static void Enterdates()
+        {
             //Identify availabledates textbox and enter start date and end date
-            WaitTobeClickable(driver, "XPath", "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[7]/div[2]/div/div[1]/div[2]/input", 10);
-            IWebElement startdate = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[7]/div[2]/div/div[1]/div[2]/input"));
+            Wait.WaitTobeClickable(Commondriver.driver, "XPath", "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[7]/div[2]/div/div[1]/div[2]/input", 10);
             startdate.SendKeys("08-4-2024");
-
-            WaitTobeClickable(driver, "XPath", "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[7]/div[2]/div/div[1]/div[4]/input", 10);
-            IWebElement enddate = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[7]/div[2]/div/div[1]/div[4]/input"));
+            Wait.WaitTobeClickable(Commondriver.driver, "XPath", "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[7]/div[2]/div/div[1]/div[4]/input", 10);
             enddate.SendKeys("05-05-2024");
-
+        }
+        public static void Addskillexchangetag()
+        {
             //Identify skillexchange tab and add new tags
-            IWebElement addnewtag = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[8]/div[4]/div[1]/div/div/div/div/input"));
             addnewtag.SendKeys("def");
             addnewtag.SendKeys(Keys.Enter);
-
-            //click on save button
-            IWebElement savebutton = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[11]/div/input[1]"));
-            savebutton.Click();
-            WaitForELementToExist(driver, "XPath", "//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[2]", 10);
-
         }
-
-        
-        public string Getcreatedcategory(IWebDriver driver)
+        public static void Clicksavebutton()
         {
-            IWebElement createdcategory = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[2]"));
+            //click on save button            
+            savebutton.Click();
+            Wait.WaitForELementToExist(Commondriver.driver, "XPath", "//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[2]", 10);
+        }        
+        public static string Getcreatedcategory()
+        {            
             return createdcategory.Text;
         }
-        public string Getcreatedtitle(IWebDriver driver)
-        {
-            IWebElement createdtitle = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
+        public static string Getcreatedtitle()
+        {            
             return createdtitle.Text;
         }
-        public string Getcreateddescription(IWebDriver driver)
-        {
-            IWebElement createddescription = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[4]"));
+        public static string Getcreateddescription()
+        {            
             return createddescription.Text;
         }
-        public string Getcreatedservicetype(IWebDriver driver)
-        {
-        IWebElement createdservicetype = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[5]"));
+        public static string Getcreatedservicetype()
+        {        
             return createdservicetype.Text;
         }
-        public string Getcreatedactive(IWebDriver driver)
-        {
-
-            IWebElement createdactive = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[7]/div/input"));
+        public static string Getcreatedactive()
+        {            
             return createdactive.Enabled.ToString();
-
         }
     }
 }

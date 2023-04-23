@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SpecflowTask.pages;
 using SpecflowTask.utilities;
@@ -8,84 +9,106 @@ using TechTalk.SpecFlow;
 namespace SpecflowTask.stepdefinition
 {
     [Binding]
-    public class MarsQAWebsiteStepDefinitions : Commondriver
+    public class MarsQAWebsiteStepDefinitions:Commondriver
     {
-        register_page registerpageobj = new register_page();
-        signinpage loginpageobj = new signinpage();
-        profilepage profilepageobj = new profilepage();
-        shareskillpage shareskillpageobj = new shareskillpage();
-
-       [Given(@"I registered in MarsQA Website")]
+        [Given(@"I registered in MarsQA Website")]
         public void GivenIRegisteredMarsQAWebsiteSucessfully()
-        { 
-            //Registerpage object intialization and difinition
-            registerpageobj.registeractions(driver);
-
+        {
+            //Registerpage and difinition
+            register_page.registeractions();
+            register_page.GoTojoinbutton();
+            register_page.AddName();
+            register_page.AddLastName();
+            register_page.AddEmailid();
+            register_page.AddPassword();
+            register_page.reenterpassword();
+            register_page.Clicktermsandconditions();
+            register_page.Clickjoinbutton();
         }
         [Then(@"I see registered sucessfully message")]
         public void ThenISeeRegisteredSucessfullyMessage()
         {
-            string newText = registerpageobj.alertWindow(driver);
-
-            Assert.That(newText == "Registration successful", "The registration was unsuccessful, Please fix it");
+            string newText = register_page.alertWindow();
+            Assert.That(newText == "Registration successful", "The registration was unsuccessful, Please fix it");            
         }
         [Given(@"I logged into MarsQA Website sucessfully")]
         public void GivenILoggedIntoMarsQAWebsiteSucessfully()
-        {            
-            //loginpage object intialization and difinition
-            loginpageobj.loginactions(driver);
+        {
+            //loginpage difinition
+            signinpage.loginactions();
+            signinpage.Clicksigninbutton();
+            signinpage.Addemailaddress();
+            signinpage.Addpassword();
+            signinpage.Clickloginbutton();
         }
         [When(@"I navigate to skills tab and add skills")]
         public void WhenINavigateToSkillsTabAndAddSkills()
         {
-            //profilepage object intialization and difinition
-            profilepageobj.AddSkills(driver);
+            //profilepage difinition
+            profilepage.AddSkills();
+            profilepage.Clickaddnewbutton();
+            profilepage.Addskill();
+            profilepage.Addskilllevel();
+            profilepage.Clickaddbutton();
         }
         [Then(@"The skills should be added to the profile sucessfully")]
         public void ThenTheSkillsShouldBeAddedToTheProfileSucessfully()
         {
-            string addedskill = profilepageobj.alertWindow(driver);
-            Assert.That(addedskill == "Music23 has been added to your skills", "Music21 has not been matched correctly");
+            string newskill = profilepage.alertWindow();
+            Assert.That(newskill == "Music20 has been added to your skills", "Music21 has not been matched correctly");
         }
         [When(@"I navigate to skills tab and update skills")]
         public void WhenINavigateToSkillsTabAndUpdateSkills()
         {
-            profilepageobj.EditSkills(driver);
+            profilepage.EditSkills();
+            profilepage.Skilledit();
+            profilepage.Editskill();
+            profilepage.Updatebutton();
         }
         [Then(@"The skills should be updated to the profile sucessfully")]
         public void ThenTheSkillsShouldBeUpdatedToTheProfileSucessfully()
         {
-            string editedskill = profilepageobj.alertWindow(driver);
+            string editedskill = profilepage.alertWindow();
             Assert.That(editedskill == "chess4 has been updated to your skills", "Actual text and expected text do not match");
-            
         }
 
         [When(@"I navigate to skills tab and delete skills")]
         public void WhenINavigateToSkillsTabAndDeleteSkills()
         {
-            profilepageobj.DeleteSkills(driver);
+            profilepage.DeleteSkills();
+            profilepage.Skilldelete();
         }
         [Then(@"The skills should be deleted sucessfully")]
         public void ThenTheSkillsShouldBeDeletedSucessfully()
         {
-            string DeletedSkill = profilepageobj.alertWindow(driver);
+            string DeletedSkill = profilepage.alertWindow();
             Assert.That(DeletedSkill == "chess4 has been deleted", "Actual data and expected data do Not match");
         }
-
 
         [When(@"I navigate to shareskills and give valid data")]
         public void WhenINavigateToShareskillsAndGiveValidData()
         {
-            shareskillpageobj.ShareSkills(driver);
+            //shareskillspage definition
+            shareskillpage.ShareSkills();
+            shareskillpage.Entertitlename();
+            shareskillpage.Enterdescription();
+            shareskillpage.Selectcategory();
+            shareskillpage.Selectsubcategory();
+            shareskillpage.Addtag();
+            shareskillpage.Clickoneoffservicebutton();
+            shareskillpage.Clickonsitebutton();
+            shareskillpage.Enterdates();
+            shareskillpage.Addskillexchangetag();
+            shareskillpage.Clicksavebutton();
         }
         [Then(@"The shareskills should be submitted sucessfully")]
         public void ThenTheShareskillsShouldBeSubmittedSucessfully()
         {
-            string Createdcategory = shareskillpageobj.Getcreatedcategory(driver);
-            string createdtitle = shareskillpageobj.Getcreatedtitle(driver);
-            string createddescription = shareskillpageobj.Getcreateddescription(driver);
-            string createdservicetype = shareskillpageobj.Getcreatedservicetype(driver);
-            string createdactive = shareskillpageobj.Getcreatedactive(driver);
+            string Createdcategory = shareskillpage.Getcreatedcategory();
+            string createdtitle = shareskillpage.Getcreatedtitle();
+            string createddescription = shareskillpage.Getcreateddescription();
+            string createdservicetype = shareskillpage.Getcreatedservicetype();
+            string createdactive = shareskillpage.Getcreatedactive();
 
             Assert.That(Createdcategory == "Music & Audio", "Actual category and expected category do Not match");
             Assert.That(createdtitle == "music for beginners", "Actual title and expected title do Not match");
@@ -93,21 +116,13 @@ namespace SpecflowTask.stepdefinition
             Assert.That(createdservicetype == "One-off", "Actual servicetype and expected servicetype do Not match");
             Assert.That(createdactive == "True", "Actual active and expected active do Not match");
         }
-
         [AfterScenario]
-        public void tearDown()
-        {
+        public void TearDown()
+        {            
             driver.Quit();
+            driver.Dispose();
         }
-
     }
-
-
-
-
-
-
-
 }
 
 

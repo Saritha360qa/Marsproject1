@@ -7,10 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SpecflowTask.utilities
-{
+{ 
     public class Commondriver
     {
-        public IWebDriver driver = new ChromeDriver();
+        public static IWebDriver driver { get; set; }
+        public Commondriver() 
+        { 
+            driver = new ChromeDriver();
+        }
     }
 }
 

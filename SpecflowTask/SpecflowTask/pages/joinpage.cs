@@ -12,66 +12,76 @@ using System.Threading.Tasks;
 
 namespace SpecflowTask.pages
 {
-    public class register_page:Wait
+    public static class register_page
     {
-        public void registeractions(IWebDriver driver)
+        //Finding element by XPath
+        private static IWebElement joinbutton => Commondriver.driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/button"));
+        private static IWebElement nametextbox => Commondriver.driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[1]/input"));
+        private static IWebElement lastnametextbox => Commondriver.driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[2]/input"));
+        private static IWebElement emailidtextbox => Commondriver.driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[3]/input"));
+        private static IWebElement passwordtextbox =>Commondriver.driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[4]/input"));
+        private static IWebElement reenterpasswordtextbox => Commondriver.driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[5]/input"));
+        private static IWebElement termsandconditionscheckbox =>Commondriver.driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[6]/div/div/input"));
+        private static IWebElement joinbutton1 => Commondriver.driver.FindElement(By.Id("submit-btn"));
+        private static IWebElement confirmationAlert => Commondriver.driver.FindElement(By.CssSelector("[class=\"ns-box ns-growl ns-effect-jelly ns-type-success ns-show\"]"));
+        public static void registeractions()
         {
-
-            driver.Manage().Window.Maximize();
-
-
+            Commondriver.driver.Manage().Window.Maximize();
             //Launch MarsQA Website
-            driver.Navigate().GoToUrl("http://localhost:5000/");
-
+            Commondriver.driver.Navigate().GoToUrl("http://localhost:5000/");            
+        }
+        public static void GoTojoinbutton()
+        {   
             //Identify the join button and click on it
-            WaitTobeClickable(driver, "XPath", "//*[@id=\"home\"]/div/div/div[1]/div/button", 10);
-            IWebElement joinbutton = driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/button"));
+            Wait.WaitTobeClickable(Commondriver.driver, "XPath", "//*[@id=\"home\"]/div/div/div[1]/div/button", 10);
             joinbutton.Click();
-
-
+        }
+        public static void AddName()
+        {
             //Identify the name textbox and enter the valid name
-            WaitForELementToExist(driver, "XPath", "/html/body/div[2]/div/div/form/div[1]/input", 10);
-            IWebElement nametextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[1]/input"));
+            Wait.WaitForELementToExist(Commondriver.driver, "XPath", "/html/body/div[2]/div/div/form/div[1]/input", 10);
             nametextbox.SendKeys("Saritha");
-
-            //Identify the last name textbox and enter the valid last name
-            IWebElement lastnametextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[2]/input"));
+        }
+        public static void AddLastName()
+        {
+           //Identify the last name textbox and enter the valid last name
             lastnametextbox.SendKeys("Muthavarapu");
-
+        }
+        public static void AddEmailid()
+        {
             //Get Timestamp and generate unique email
             var Timestamp = Stopwatch.GetTimestamp();
             var email = "Saritha" + Timestamp.ToString() + "@a.com";
-
             //Identify the Emailid textbox and enter the valid Emailid
-            IWebElement emailidtextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[3]/input"));
             emailidtextbox.SendKeys(email);
-
-            //Identify the password textbox and enter the valid password
-            IWebElement passwordtextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[4]/input"));
-            passwordtextbox.SendKeys("Test1235");
-
-            //Identify the reenter password textbox and enter the valid password
-            IWebElement reenterpasswordtextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[5]/input"));
-            reenterpasswordtextbox.SendKeys("Test1235");
-
-            //Click on terms and conditions checkbox
-            IWebElement termsandconditionscheckbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div[6]/div/div/input"));
-            termsandconditionscheckbox.Click();
-
-            //Click on join button
-            WaitTobeClickable(driver, "Id", "submit-btn", 7);
-            IWebElement joinbutton1 = driver.FindElement(By.Id("submit-btn"));
-            joinbutton1.Click();
-            WaitForELementToExist(driver, "CssSelector", "body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-success.ns-show > div", 3);
         }
-        public string alertWindow(IWebDriver driver)
+        public static void AddPassword()
         {
-
-            WaitForELementToExist(driver, "CssSelector", "[class=\"ns-box ns-growl ns-effect-jelly ns-type-success ns-show\"]", 5);
-            IWebElement confirmationAlert = driver.FindElement(By.CssSelector("[class=\"ns-box ns-growl ns-effect-jelly ns-type-success ns-show\"]"));
-            return confirmationAlert.Text;
-
+            //Identify the password textbox and enter the valid password
+            passwordtextbox.SendKeys("Test1235");
         }
-
+        public static void reenterpassword()
+        {
+            //Identify the reenter password textbox and enter the valid password
+            reenterpasswordtextbox.SendKeys("Test1235");
+        }
+        public static void Clicktermsandconditions()
+        {
+            //Click on terms and conditions checkbox
+            termsandconditionscheckbox.Click();
+        }
+        public static void Clickjoinbutton()
+        { 
+            //Click on join button
+            Wait.WaitTobeClickable(Commondriver.driver, "Id", "submit-btn", 7);            
+            joinbutton1.Click();
+            Wait.WaitForELementToExist(Commondriver.driver, "CssSelector", "body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-success.ns-show > div", 3);
+        }
+        public static string alertWindow()
+        {
+            Wait.WaitForELementToExist(Commondriver.driver, "CssSelector", "[class=\"ns-box ns-growl ns-effect-jelly ns-type-success ns-show\"]", 5);
+            return confirmationAlert.Text;
+        }
+        
     }
 }

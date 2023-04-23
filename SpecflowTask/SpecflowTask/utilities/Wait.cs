@@ -48,8 +48,6 @@ namespace Automation1.utilities
             {
                 wait.Until(ExpectedConditions.ElementExists(By.Name(locatorValue)));
             }
-
-
         }
     }
 }

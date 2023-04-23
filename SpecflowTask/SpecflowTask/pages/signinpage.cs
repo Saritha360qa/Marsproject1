@@ -1,5 +1,6 @@
 ﻿using Automation1.utilities;
 using OpenQA.Selenium;
+using SpecflowTask.utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,45 +9,46 @@ using System.Threading.Tasks;
 
 namespace SpecflowTask.pages
 {
-    public class signinpage:Wait
+    public static class signinpage
     {
-        public void loginactions(IWebDriver driver)
+        private static IWebElement signinbutton => Commondriver.driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
+        private static IWebElement emailaddersstextbox => Commondriver.driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
+        private static IWebElement passwordtextbox => Commondriver.driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
+        private static IWebElement loginbutton => Commondriver.driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+        private static IWebElement confirmationAlert => Commondriver.driver.FindElement(By.CssSelector("[class=\"ns-box ns-growl ns-effect-jelly ns-type-success ns-show\"]"));
+        public static void loginactions()
         {
-            driver.Manage().Window.Maximize();
-
-
+            Commondriver.driver.Manage().Window.Maximize();
             //Launch MarsQA Website
-            driver.Navigate().GoToUrl("http://localhost:5000/");
-
+            Commondriver.driver.Navigate().GoToUrl("http://localhost:5000/");
+        }
+        public static void Clicksigninbutton()
+        {
             //Navigate to signin button and click on it
-            WaitTobeClickable(driver, "XPath", "//*[@id=\"home\"]/div/div/div[1]/div/a", 10);
-            IWebElement signinbutton = driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
+            Wait.WaitTobeClickable(Commondriver.driver, "XPath", "//*[@id=\"home\"]/div/div/div[1]/div/a", 10);
             signinbutton.Click();
-
+        }
+        public static void Addemailaddress()
+        {
             //Identify email address textbox and enter the valid email address
-            WaitTobeClickable(driver, "XPath", "/html/body/div[2]/div/div/div[1]/div/div[1]/input", 10);
-            IWebElement emailaddersstextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
+            Wait.WaitTobeClickable(Commondriver.driver, "XPath", "/html/body/div[2]/div/div/div[1]/div/div[1]/input", 10);
             emailaddersstextbox.Click();
             emailaddersstextbox.SendKeys("saritha@grr2.la");
-
-            //Identify passwordtextbox and enter the valid password
-            IWebElement passwordtextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
-            passwordtextbox.SendKeys("Test1235");
-
-            //Click on login button
-            IWebElement loginbutton = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
-            loginbutton.Click();
-            WaitTobeClickable(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span", 10);
-
         }
-        
-        public string alertWindow(IWebDriver driver)
+        public static void Addpassword()
         {
-
-            WaitForELementToExist(driver, "CssSelector", "[class=\"ns-box ns-growl ns-effect-jelly ns-type-success ns-show\"]", 5);
-            IWebElement confirmationAlert = driver.FindElement(By.CssSelector("[class=\"ns-box ns-growl ns-effect-jelly ns-type-success ns-show\"]"));
+            //Identify passwordtextbox and enter the valid password
+            passwordtextbox.SendKeys("Test1235");
+        }
+        public static void Clickloginbutton()
+        { 
+            //Click on login button            
+            loginbutton.Click();
+            Wait.WaitTobeClickable(Commondriver.driver, "XPath", "//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span", 10);
+        }        
+        public static string alertWindow()
+        {            
             return confirmationAlert.Text;
-
         }
 
     }
